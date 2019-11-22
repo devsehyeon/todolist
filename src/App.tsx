@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import TodoTitle from "./components/TodoTitle";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
+import { TodosContextProvider } from "./contexts/TodosContext";
+import styled from "styled-components";
 
-const App: React.FC = () => {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Content>
+        <TodoTitle />
+        <TodosContextProvider>
+          <TodoForm />
+          <TodoList />
+        </TodosContextProvider>
+      </Content>
+    </Container>
   );
-}
+};
+
+const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Content = styled.div`
+  width: 100%;
+  max-width: 70%;
+  max-height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+`;
 
 export default App;
